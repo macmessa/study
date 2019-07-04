@@ -25,6 +25,8 @@ routes.use(authMiddleware);
 routes.put('/users', UserController.update);
 // List providers
 routes.get('/providers', ProviderController.index);
+// List appointments
+routes.get('/appointments', AppointmentController.index);
 // Create appointment
 routes.post('/appointments', AppointmentController.store);
 // Upload picture
