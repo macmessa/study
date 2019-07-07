@@ -59,6 +59,13 @@ class AppointmentController {
         .json({ error: 'You can only create appointments with providers' });
     }
 
+    // Check if provider is trying to create an appointment to himself
+    if (req.userId === provider_id) {
+      return res
+        .status(400)
+        .json({ error: 'Cannot create appointment to yourself' });
+    }
+
     // Check for past dates
     const hourStart = startOfHour(parseISO(date));
 
@@ -79,6 +86,21 @@ class AppointmentController {
       return res
         .status(400)
         .json({ error: 'Appointment date is not available' });
+    }
+
+    // Check user availability
+    const checkUserAvailability = await Appointment.findOne({
+      where: {
+        user_id: req.userId,
+        canceled_at: null,
+        date: hourStart,
+      },
+    });
+
+    if (checkUserAvailability) {
+      return res.status(400).json({
+        error: 'You have an appointment with another provider at the same date',
+      });
     }
 
     const appointment = await Appointment.create({
