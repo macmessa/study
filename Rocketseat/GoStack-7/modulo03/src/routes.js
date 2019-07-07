@@ -24,16 +24,23 @@ routes.use(authMiddleware);
 
 // Update user
 routes.put('/users', UserController.update);
+
 // List providers
 routes.get('/providers', ProviderController.index);
+
 // List appointments
 routes.get('/appointments', AppointmentController.index);
 // Create appointment
 routes.post('/appointments', AppointmentController.store);
+
 // List schedules
 routes.get('/schedule', ScheduleController.index);
+
 // List notifications
 routes.get('/notifications', NotificationController.index);
+// Mark notifications as read
+routes.put('/notifications/:id', NotificationController.update);
+
 // Upload picture
 routes.post('/files', upload.single('file'), FileController.store);
 
