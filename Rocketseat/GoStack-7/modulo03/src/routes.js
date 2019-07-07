@@ -32,6 +32,8 @@ routes.get('/providers', ProviderController.index);
 routes.get('/appointments', AppointmentController.index);
 // Create appointment
 routes.post('/appointments', AppointmentController.store);
+// Cancel appointment
+routes.delete('/appointments/:id', AppointmentController.delete);
 
 // List schedules
 routes.get('/schedule', ScheduleController.index);
