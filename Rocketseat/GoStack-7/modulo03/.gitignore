@@ -2,3 +2,5 @@ node_modules
 
 # temp files
 tmp/uploads/*
+
+.env
