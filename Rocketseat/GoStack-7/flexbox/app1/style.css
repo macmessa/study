@@ -10,3 +10,18 @@ body {
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
 }
+
+main#container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-left img {
+  width: 25px;
+  height: 25px;
+}
+
+main#content section {
+  width: 600px;
+}
