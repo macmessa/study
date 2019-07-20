@@ -4,24 +4,145 @@
   box-sizing: border-box;
 }
 
+/* REMOVER APÓS FINALIZAR LAYOUT */
+/*
+nav {
+  border: 1px solid red;
+}
+
+header,
+section,
+aside {
+  border: 1px solid blue;
+}
+
+main {
+  border: 1px solid green;
+}
+*/
+/* REMOVER APÓS FINALIZAR LAYOUT */
+
+html {
+  height: 100%;
+}
+
 body {
-  background: #e6ecf0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Helvetica Neue", sans-serif;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
 }
 
-main#container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.avatar {
+  border-radius: 50%;
 }
 
-.nav-left img {
+.button-solid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  background-color: rgba(29, 161, 242, 1);
+}
+
+.button-solid a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.button-solid:hover,
+.button-solid:focus {
+  background-color: rgb(23, 129, 194);
+}
+
+main#container {
+  display: flex;
+  align-items: top;
+  justify-content: center;
+}
+
+header#main-header {
+  display: flex;
+  flex-direction: column;
+}
+
+header#main-header nav {
+  width: 275px;
+  margin: 11px 0 17px 0;
+}
+
+header#main-header .button-solid {
+  width: 215px;
+  height: 46px;
+  margin: 5px 0 0 -5px;
+}
+
+header#main-header nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+header#main-header nav img {
+  width: 36px;
+  height: 28px;
+}
+
+header#main-header nav ul img {
   width: 25px;
   height: 25px;
+  margin-right: 18px;
+}
+
+header#main-header nav ul li {
+  display: flex;
+  align-items: center;
+  padding: 23px 0 2.3px 4px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+header#main-header nav ul li.active {
+  color: rgba(29, 161, 242, 1);
+}
+
+header#main-header nav ul li.active .avatar {
+  box-shadow: 0 0 0 2.5px rgba(29, 161, 242, 1);
+}
+
+main#content {
+  display: flex;
+}
+
+main#content nav {
+  display: flex;
+  align-items: center;
+  height: 50px;
 }
 
 main#content section {
   width: 600px;
+  border: 1px solid;
+  border-color: rgb(230, 236, 240);
+}
+
+main#content aside {
+  width: 360px;
+  display: flex;
+  justify-content: center;
+}
+
+main#content section img {
+  width: 21px;
+  height: 21px;
+}
+
+main#content aside img {
+  width: 21px;
+  height: 21px;
 }

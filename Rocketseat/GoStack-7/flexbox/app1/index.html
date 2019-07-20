@@ -5,13 +5,14 @@
   <meta charset="UTF-8">
   <title>Twitter</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
 </head>
 
 <body>
   <main id="container">
     <!-- Header and navigation -->
-    <header>
-      <nav class="nav-left">
+    <header id="main-header">
+      <nav>
         <img src="./images/logo.svg" alt="Twitter">
         <ul>
           <li><img src="./images/home.svg" alt="Página inicial"> Página inicial</li>
@@ -20,29 +21,30 @@
           <li><img src="./images/message.svg" alt="Mensagens"> Mensagens</li>
           <li><img src="./images/saved.svg" alt="Itens salvos"> Itens salvos</li>
           <li><img src="./images/list.svg" alt="Listas"> Listas</li>
-          <li><img src="./images/avatar.jpg" alt="Perfil"> Perfil</li>
+          <li class="active"><img src="./images/avatar.jpg" alt="Perfil" class="avatar"> Perfil</li>
           <li><img src="./images/more.svg" alt="Mais"> Mais</li>
         </ul>
-        <div class="solid-button">
-          <a href="#">Tweet</a>
-        </div>
       </nav>
+      <div class="button-solid">
+        <a href="#">Tweet</a>
+      </div>
     </header>
     <main id="content">
       <!-- Main column -->
       <section>
-        <nav class="nav-top">
+        <nav>
           <img src="./images/back.svg" alt="Voltar">
-          <h2>Marco</h2>
-          <div>1.961 Tweets</div>
+          <div>
+            <h2>Marco</h2>
+            <span>1.961 Tweets</span>
+          </div>
         </nav>
       </section>
 
       <!-- Side column -->
       <aside>
-        <nav class="nav-top">
+        <nav>
           <div>
-            <img src="./images/search.svg" alt="Buscar no Twitter">
             <input type="search" name="search" id="search" placeholder="Buscar no Twitter" />
           </div>
         </nav>
