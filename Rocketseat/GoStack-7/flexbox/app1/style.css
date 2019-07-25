@@ -62,13 +62,21 @@ body {
 
 main#container {
   display: flex;
-  align-items: top;
   justify-content: center;
+  height: inherit;
+  margin: 0 auto;
+}
+
+main#content .banner {
+  position: relative;
 }
 
 header#main-header {
   display: flex;
   flex-direction: column;
+  /*position: fixed;*/
+  flex-grow: 1;
+  align-items: flex-end;
 }
 
 header#main-header nav {
@@ -117,6 +125,7 @@ header#main-header nav ul li.active .avatar {
 
 main#content {
   display: flex;
+  width: 990px;
 }
 
 main#content nav {
