@@ -1,11 +1,20 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import TechItem from "./TechItem";
 
 class TechList extends Component {
+  static defaultProps = {
+    techList: ["Node.js", "ReactJS", "React Native"]
+  };
+
+  static propTypes = {
+    techList: PropTypes.array
+  };
+
   state = {
     newTech: "",
-    techs: ["Node.js", "ReactJS", "React Native"]
+    techs: this.props.techList
   };
 
   handleInputChange = e => {
@@ -31,6 +40,7 @@ class TechList extends Component {
       <>
         <form onSubmit={this.handleSubmit}>
           <ul>
+            {console.log(this.props.lang)}
             {this.state.techs.map((tech, index) => (
               <TechItem
                 key={index}
