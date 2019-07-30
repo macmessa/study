@@ -5,7 +5,7 @@ import TechItem from "./TechItem";
 
 class TechList extends Component {
   static defaultProps = {
-    techList: ["Node.js", "ReactJS", "React Native"]
+    techList: []
   };
 
   static propTypes = {
@@ -16,6 +16,22 @@ class TechList extends Component {
     newTech: "",
     techs: this.props.techList
   };
+
+  // Executado assim que o componente aparece em tela
+  componentDidMount() {
+    const techs =
+      JSON.parse(localStorage.getItem("techs")) || this.props.techList;
+
+    this.setState({ techs });
+  }
+
+  // Executado sempre que houver alterações nas props ou estado
+  // Parâmetros: prevProps, prevState
+  componentDidUpdate(_, prevState) {
+    if (prevState.techs !== this.state.techs) {
+      localStorage.setItem("techs", JSON.stringify(this.state.techs));
+    }
+  }
 
   handleInputChange = e => {
     this.setState({ newTech: e.target.value });
@@ -40,7 +56,6 @@ class TechList extends Component {
       <>
         <form onSubmit={this.handleSubmit}>
           <ul>
-            {console.log(this.props.lang)}
             {this.state.techs.map((tech, index) => (
               <TechItem
                 key={index}
