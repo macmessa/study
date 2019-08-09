@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { Loading, Owner } from './styles';
+import { Loading, Owner, IssueList, IssueLabel } from './styles';
 import api from '../../services/api';
 import Container from '../../components/Container';
 
@@ -31,7 +31,7 @@ export default class Repository extends Component {
       api.get(`/repos/${repoName}/issues`, {
         params: {
           state: 'open',
-          per_page: 5,
+          per_page: 6,
         },
       }),
     ]);
@@ -58,6 +58,34 @@ export default class Repository extends Component {
           <h1>{repository.name}</h1>
           <p>{repository.description}</p>
         </Owner>
+
+        <IssueList>
+          {issues.map(issue => (
+            <li key={String(issue.id)}>
+              <img src={issue.user.avatar_url} alt={issue.user.login} />
+              <div>
+                <strong>
+                  <a
+                    href={issue.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {issue.title}
+                  </a>
+                  {issue.labels.map(label => (
+                    <IssueLabel
+                      key={String(label.id)}
+                      background={`#${label.color}`}
+                    >
+                      {label.name}
+                    </IssueLabel>
+                  ))}
+                  <p>{issue.user.login}</p>
+                </strong>
+              </div>
+            </li>
+          ))}
+        </IssueList>
       </Container>
     );
   }
