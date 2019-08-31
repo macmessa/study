@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 function App() {
   const [techs, setTech] = useState([]);
@@ -16,11 +16,18 @@ function App() {
     if (localTechs) {
       setTech(JSON.parse(localTechs));
     }
+
+    // componentWillUnmount
+    // return () => {}
   }, []);
 
+  // Executa sempre que houver uma alteração no state techs
+  // semelhante ao componentDidUpdate
   useEffect(() => {
     localStorage.setItem('techs', JSON.stringify(techs));
   }, [techs]);
+
+  const techSize = useMemo(() => techs.length, [techs]);
 
   return (
     <>
@@ -29,6 +36,8 @@ function App() {
           <li key={tech}>{tech}</li>
         ))}
       </ul>
+      <strong>Quantidade de tecnologias: {techSize}</strong>
+      <br />
       <input
         type="text"
         value={newTech}
