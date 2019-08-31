@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function App() {
   const [techs, setTech] = useState([]);
@@ -8,6 +8,19 @@ function App() {
     setTech([...techs, newTech]);
     setNewTech('');
   }
+
+  // Executa uma única vez, semelhante ao componentDidMount
+  useEffect(() => {
+    const localTechs = localStorage.getItem('techs');
+
+    if (localTechs) {
+      setTech(JSON.parse(localTechs));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('techs', JSON.stringify(techs));
+  }, [techs]);
 
   return (
     <>
